@@ -1,0 +1,33 @@
+---
+# Master playbook to configure all servers
+- name: Complete Infrastructure Configuration
+  hosts: all
+  gather_facts: yes
+  
+  tasks:
+    - name: Display server information
+      debug:
+        msg: "Configuring {{ inventory_hostname }} - {{ ansible_default_ipv4.address }}"
+
+- import_playbook: web-server.yml
+- import_playbook: app-server.yml
+
+- name: Post-deployment verification
+  hosts: all
+  become: yes
+  tasks:
+    - name: Check if services are running
+      shell: systemctl is-active {{ item }}
+      register: service_status
+      failed_when: false
+      changed_when: false
+      loop:
+        - httpd
+        - app-server
+      when: "'web' in group_names or 'app' in group_names"
+
+    - name: Display service status
+      debug:
+        msg: "Service {{ item.item }} status: {{ item.stdout }}"
+      loop: "{{ service_status.results }}"
+      when: service_status is defined
