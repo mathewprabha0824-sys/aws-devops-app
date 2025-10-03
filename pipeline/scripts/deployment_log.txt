@@ -1,0 +1,24 @@
+[0;34m╔════════════════════════════════════════╗[0m
+[0;34m║   DevOps Assessment - CI/CD Deploy    ║[0m
+[0;34m╚════════════════════════════════════════╝[0m
+
+[1;33m📦 Step 1: Building Application...[0m
+[0;32m✓ Build completed[0m
+
+[1;33m🧪 Step 2: Running Tests...[0m
+
+[1;33m🚀 Step 3: Deploying to staging...[0m
+Deploying to 3.110.195.50...
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+[0;32m✓ Deployed to 3.110.195.50[0m
+Deploying to 3.111.29.97...
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+[0;32m✓ Deployed to 3.111.29.97[0m
+
+[1;33m🏥 Step 4: Running Health Checks...[0m
+[0;32m✓ 3.110.195.50 is healthy[0m
+[0;32m✓ 3.111.29.97 is healthy[0m
+
+[0;32m╔════════════════════════════════════════╗[0m
+[0;32m║   ✓ Deployment Complete!              ║[0m
+[0;32m╚════════════════════════════════════════╝[0m
